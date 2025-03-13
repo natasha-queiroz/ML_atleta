@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    max-width: 800px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.container_form {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1, h2, h3 {
+    background: #ffffff33;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    text-align: left;
+}
+
+.velocidade_resist {
+    width: 150px;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+input:focus {
+    outline: chartreuse;
+    border: 3px solid chartreuse;
+}
+
+.container_listaAtletas {
+    overflow: scroll;
+    color: black;
+    margin: auto;
+    background-color: #f8f8f8;
+    width: 400px;
+    height: 150px;
+}
+.lista {
+    margin: 0px;
+    padding: 0px;
+}
+
+.qtd_grupo {
+    width: 50px;
+}
+
+.container_classificar_grupo {
+    background-color: #bebebe42;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+button {
+    background: #ff7eb3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:focus {
+    outline: chartreuse;
+    border: 3px solid chartreuse;
+}
+
+button:hover {
+    background: #ff5a8a;
+    transform: scale(1.05);
+}
+
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #e0e0e0; /* Cor de fundo para linhas ímpares */
+}
+
+
+th {
+    background: #ff7eb3;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+tbody tr:hover {
+    background: #ffebf2;
+}
+
+.container_linear_neural {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+#previsao {
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 20px;
+    width: 500px;
+    height: 100px;
+}
+
+

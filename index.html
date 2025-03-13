@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação de Atletas</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Classificação de Atletas</h1>
+        <div class="container_form">
+            <label>Nome: <br>
+                <input type="text" id="nome">
+            </label>
+            <label>Velocidade: <br>
+                <input class="velocidade_resist" type="text" id="velocidadeCadastro" step="0.1">
+            </label>
+            <label>Resistência: <br>
+                <input class="velocidade_resist" type="text" id="resistenciaCadastro" step="0.1">
+            </label>
+            <button onclick="adicionarAtleta()">Adicionar</button>
+        </div>
+        <h3>Lista de Atletas</h3>
+        <section class="container_listaAtletas">
+            <div class="lista" id="listaAtletas"></div>
+        </section>
+
+        <h3>Classificar Atletas</h3>
+        <section class="container_classificar_grupo">
+            <label>Número de grupos:
+                <input class="qtd_grupo" type="number" id="kMeansClusters" value="3" min="2" max="5">
+            </label>
+            <button onclick="classificarAtletas()">Classificar e Agrupar</button>
+        </section>
+        <h3>Atletas Agrupados</h3>
+        <table id="tabelaGrupos" border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Velocidade</th>
+                    <th>Resistência</th>
+                    <th>Pontuação</th>
+                    <th>Grupo</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h2>Treinar Modelos</h2> <br>
+        <section class="container_linear_neural">
+            <button onclick="treinarRegressaoLinear()">Treinar Regressão Linear
+                <p id="resultado"></p>
+            </button>
+            <button onclick="treinarRedeNeural()">Treinar Rede Neural
+                <p id="resultado_rede_neural"></p>
+            </button>
+        </section>
+        
+        
+        
+        <h3>Prever Novo Atleta</h3>
+        <section class="container_previsao">
+            <button onclick="preverAtletaAleatorio()">Prever</button> <br>
+            <div class="resposta_previsao">
+                <p id="previsao"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
