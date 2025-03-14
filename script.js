@@ -80,6 +80,7 @@ function atualizarTabelaGrupos(kMeansResultado) {
     })
 }
 
+//são usadas para converter valores para um intervalo de 0 a 1
 function normalizar(valor, min, max) {
     return (valor - min) / (max - min)
 }
@@ -96,6 +97,7 @@ async function treinarRegressaoLinear() {
         return
     }
 
+    //calculam o valor mínimo e máximo de três propriedades de cada atleta: velocidade, resistência, e pontuação.
     minVelocidade = Math.min(...atletas.map(a => a.velocidade))
     maxVelocidade = Math.max(...atletas.map(a => a.velocidade))
     minResistencia = Math.min(...atletas.map(a => a.resistencia))
@@ -103,21 +105,26 @@ async function treinarRegressaoLinear() {
     minPontuacao = Math.min(...atletas.map(a => a.pontuacao))
     maxPontuacao = Math.max(...atletas.map(a => a.pontuacao))
 
+    //units: 1: Um único neurônio na camada de saída (pois é uma regressão linear, a previsão é um valor contínuo).
+    //inputShape: [2]: O modelo espera uma entrada de 2 valores para cada atleta (no caso, velocidade e resistência).
     modelLinear = tf.sequential()
     modelLinear.add(tf.layers.dense({ units: 1, inputShape: [2] }))
     modelLinear.compile({ loss: "meanSquaredError", optimizer: tf.train.adam(0.1) })
 
+    //dados de entrada/A função normalizar é chamada para converter a velocidade de cada atleta para o intervalo de 0 a 1, com base nos valores mínimos e máximos calculados anteriormente.
     const xs = tf.tensor2d(atletas.map(a => [
         normalizar(a.velocidade, minVelocidade, maxVelocidade),
         normalizar(a.resistencia, minResistencia, maxResistencia)
     ]))
 
+    //dados de saida/Cada atleta tem uma pontuação normalizada. A pontuação também é normalizada para o intervalo de 0 a 1.
     const ys = tf.tensor2d(atletas.map(a => [normalizar(a.pontuacao, minPontuacao, maxPontuacao)]))
 
-    await modelLinear.fit(xs, ys, { epochs: 200 })
+    await modelLinear.fit(xs, ys, { epochs: 200 })//treinado por 200vezes
 
     document.getElementById("resultado").innerText = "Modelo treinado! ✅"
 }
+
 
 async function treinarRedeNeural() {
     if (atletas.length < 3) {
