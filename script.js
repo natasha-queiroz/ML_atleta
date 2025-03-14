@@ -27,7 +27,7 @@ function atualizarListaAtletas() {
     divLista.innerHTML =  atletas.map(a => `<p>${a.nome} - Velocidade: ${a.velocidade}, Resistencia: ${a.resistencia}</p>`).join('')
 }
 
-// CLASSIFICA E AGRUPA
+// CLASSIFICA E AGRUPA USANDO K-MEANS
 function classificarAtletas() {
     if (atletas.length < 3) {
         alert("Adicione pelo menos 3 atletas para classificar.")
@@ -39,7 +39,10 @@ function classificarAtletas() {
 
     atualizarTabelaGrupos(kMeansResultado)
 
-}  // O agrupamento K-means éum método para organizar dados em grupos ou clusters, com base na similaridade.
+} 
+
+// O agrupamento K-means éum método para organizar dados em grupos ou clusters, com base na similaridade./ NAO SUPERVISIONADO - ANALISE DESCRITIVA/  é um algoritmo de aprendizado não supervisionado pq nao utiliza rotulos 
+//centroides; pontos que ajuda a determinar quais atletas pertecen a qual grupo
 function kMeansClustering(k = 3) { 
     let grupos = Array(k).fill().map(() => [])
     let centroides = atletas.slice(0, k).map(a => ({ ...a }))
@@ -60,7 +63,7 @@ function kMeansClustering(k = 3) {
 
     return { grupos, centroides }
 }
-// joga os atle
+// joga os atletas
 function atualizarTabelaGrupos(kMeansResultado) {
     const tabela = document.getElementById("tabelaGrupos").getElementsByTagName('tbody')[0]
     tabela.innerHTML = ''
