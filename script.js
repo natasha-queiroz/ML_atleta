@@ -125,7 +125,7 @@ async function treinarRegressaoLinear() {
     document.getElementById("resultado").innerText = "Modelo treinado! ✅"
 }
 
-
+//biblioteca TensorFlow
 async function treinarRedeNeural() {
     if (atletas.length < 3) {
         alert("Adicione pelo menos 3 atletas para treinar o modelo.")
@@ -162,6 +162,7 @@ function preverAtletaAleatorio() {
         return
     }
 
+    //a função math.randow gera um numero aleatorio entre 0 e 1
     const velocidade = Math.random() * (maxVelocidade - minVelocidade) + minVelocidade
     const resistencia = Math.random() * (maxResistencia - minResistencia) + minResistencia
     const entrada = tf.tensor2d([[normalizar(velocidade, minVelocidade, maxVelocidade), normalizar(resistencia, minResistencia, maxResistencia)]])
